@@ -1,0 +1,36 @@
+## 定位服务 App 的告警（OsmAnd 协议 alarm 参数）。Telegram 只发 $digest 这段纯文本。
+#set($alarmKey = $event.getString('alarm'))
+## tampering 的具体原因在位置的 reason 属性里（App 上报时带的），文案按它分开，别都写成「有人试图卸载」
+#set($reason = '')
+#if($position && $position.getString('reason'))#set($reason = $position.getString('reason'))#end
+#if($alarmKey == 'sos')#set($icon = '🆘')#set($title = '求救')#set($hint = '孩子按了求救按钮，请马上联系')
+#elseif($alarmKey == 'lowBattery')#set($icon = '🪫')#set($title = '电量低')#set($hint = '手机电量不足 10%，快没电时会自动关机')
+#elseif($alarmKey == 'powerOff')#set($icon = '📴')#set($title = '手机关机')#set($hint = '关机或重启；开机解锁后会自动恢复上报')
+#elseif($alarmKey == 'general')#set($icon = '📍')#set($title = '定位被关闭')#set($hint = '系统定位开关或定位权限被关，暂时拿不到新位置')
+#elseif($alarmKey == 'trackingOff')#set($icon = '⛔')#set($title = '追踪被关闭')#set($hint = '有人在 App 里关掉了持续追踪，之后不会再上报')
+#elseif($alarmKey == 'tampering' && $reason.startsWith('ownerPolicy:'))#set($icon = '⚙️')#set($title = '管理设置没生效')#set($hint = "三星管理版有一项防护没设上（$reason.substring(12)），位置照常上报；接电脑重跑交机脚本补上")
+#elseif($alarmKey == 'tampering' && $reason.startsWith('ownerUpdate:'))#set($icon = '⚙️')#set($title = 'App 自动更新失败')#set($hint = "新版本没装上（$reason.substring(12)），手机照常用旧版本上报，每天会自动再试")
+#elseif($alarmKey == 'tampering' && $reason == 'passwordFailures')#set($icon = '🛡️')#set($title = 'App 密码连续输错 5 次')#set($hint = '已自动退回桌面')
+#elseif($alarmKey == 'tampering' && $reason == 'adminDisabled')#set($icon = '🛡️')#set($title = '一键防护被关闭')#set($hint = '设备管理员被停用，卸载保护失效；在 App 设置里重新打开')
+#elseif($alarmKey == 'tampering' && $reason == 'accessibilityOff')#set($icon = '🛡️')#set($title = '一键防护被关闭')#set($hint = '无障碍守护被关闭；在 App 设置里重新打开')
+#elseif($alarmKey == 'tampering')#set($icon = '🛡️')#set($title = '有人试图卸载或关闭防护')#set($hint = '已自动退回桌面')
+#else#set($icon = '⚠️')#set($title = "警报 $alarmKey")#set($hint = '')
+#end
+#set($time = $dateTool.format('M月d日 HH:mm:ss', $event.eventTime, $locale, $timezone))
+#if($position)
+#set($battery = $position.getAttributes().get('batteryLevel'))
+## 有地址（服务器开了高德逆地理）用地址，没有就用经纬度
+#if($position.address)#set($place = "$position.address")#else#set($place = "$numberTool.format('0.00000', $position.latitude), $numberTool.format('0.00000', $position.longitude)")#end
+#if($position.accuracy > 0)#set($place = "$place（误差约 $numberTool.format('0', $position.accuracy) 米）")#end
+#end
+#set($subject = "$icon $device.name：$title")
+#set($n = "
+")
+#set($digest = "$icon $device.name：$title${n}时间：$time#if($battery)${n}电量：$numberTool.format('0', $battery)%#end#if($place)${n}位置：$place#end#if($hint != '')${n}说明：$hint#end${n}查看：$webUrl/m/")
+<!DOCTYPE html>
+<html>
+<body>
+$esc.html($digest).replace('
+', '<br>')
+</body>
+</html>

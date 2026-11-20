@@ -1,0 +1,15 @@
+## 设备属性 deviceInactivityStart / deviceInactivityPeriod 触发：长时间没有上报，之后定期重复提醒
+#set($lastUpdate = $dateTool.getDate())
+#set($ignore = $lastUpdate.setTime($event.getLong('lastUpdate')))
+#set($last = $dateTool.format('M月d日 HH:mm', $lastUpdate, $locale, $timezone))
+#set($subject = "⏰ $device.name：长时间没有上报")
+#set($n = "
+")
+#set($digest = "⏰ $device.name：长时间没有上报${n}最后一次上报：$last${n}请联系孩子看看手机是不是没电、关机或没网${n}查看：$webUrl/m/")
+<!DOCTYPE html>
+<html>
+<body>
+$esc.html($digest).replace('
+', '<br>')
+</body>
+</html>

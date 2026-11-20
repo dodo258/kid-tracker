@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1c1f" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="孩子在哪" />
+    <meta name="referrer" content="no-referrer" />
+    <!-- 页面本来就是中文；浏览器自动翻译会改写 React 管的文字节点，可能让页面出错 -->
+    <meta name="google" content="notranslate" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <title>孩子在哪</title>
+    <!-- 网慢时首屏先显示「正在打开…」，和页面里「正在连接服务器…」同一个位置、同一个样子；React 挂载后替换掉 #root 里的内容 -->
+    <style>
+      .boot-loading { position: fixed; inset: 0; background: #ece9e1; }
+      .boot-loading p { position: absolute; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translateX(-50%); margin: 0; padding: 8px 16px; border-radius: 9999px; background: #fff; color: #6b7076; box-shadow: 0 0 0 0.5px rgb(28 31 35 / 0.08), 0 4px 20px rgb(28 31 35 / 0.12); white-space: nowrap; font: 15px/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+      @media (prefers-color-scheme: dark) {
+        .boot-loading { background: #1f1f1f; }
+        .boot-loading p { background: #1a1c1f; color: #9a9fa6; box-shadow: 0 0 0 0.5px rgb(255 255 255 / 0.08), 0 4px 20px rgb(0 0 0 / 0.5); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"><div class="boot-loading"><p>正在打开…</p></div></div>
+    <!-- 页面脚本没跑起来（浏览器太旧不认新语法、脚本没下载下来）时，不留一片空白：显示原因和重新加载。
+         用老写法、不依赖页面样式，任何浏览器都能执行；页面一旦显示出来就不再出现。 -->
+    <style>
+      .boot-fail { position: fixed; inset: 0; z-index: 9999; overflow: auto; background: #ffffff; padding: 72px 24px 24px; font: 15px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #1c1f23; }
+      .boot-fail > div { max-width: 400px; margin: 0 auto; }
+      .boot-fail h1 { font-size: 22px; margin: 0 0 8px; }
+      .boot-fail p { color: #6b7076; margin: 0; }
+      .boot-fail code { display: block; margin-top: 16px; padding: 12px; border-radius: 10px; background: rgb(28 31 35 / 0.05); color: #1c1f23; font-size: 13px; word-break: break-all; }
+      .boot-fail button { margin-top: 16px; width: 100%; height: 48px; border: 0; border-radius: 10px; background: #1f8a4c; color: #fff; font-size: 17px; font-weight: 600; }
+      @media (prefers-color-scheme: dark) { .boot-fail { background: #1a1c1f; color: #e9eaec; } .boot-fail code { background: rgb(233 234 236 / 0.07); color: #e9eaec; } }
+    </style>
+    <script>
+      (function () {
+        var shown = false
+        function show(detail) {
+          // 只有静态的「正在打开…」时还算没打开
+          if (shown || document.querySelector('#root > :not(.boot-loading)')) return
+          shown = true
+          var box = document.createElement('div')
+          box.className = 'boot-fail'
+          box.innerHTML = '<div><h1>页面没能打开</h1><p>先点「重新加载」。还不行，就换用最新版的 Chrome、Safari 或 Edge，并把下面这行发给管理员。</p><code></code><button type="button">重新加载</button></div>'
+          box.getElementsByTagName('code')[0].textContent = detail
+          box.getElementsByTagName('button')[0].onclick = function () { location.reload() }
+          document.body.appendChild(box)
+        }
+        window.addEventListener('error', function (e) {
+          var src = e.target && e.target.src
+          var detail = src ? '脚本没下载下来：' + src : (e.message || '未知错误') + (e.filename ? '（' + e.filename.split('/').pop() + ':' + e.lineno + '）' : '')
+          setTimeout(function () { show(detail) }, 0)
+        }, true)
+        window.addEventListener('load', function () {
+          setTimeout(function () { show('页面脚本 15 秒还没运行（网络太慢或浏览器不支持）。浏览器：' + navigator.userAgent) }, 15000)
+        })
+      })()
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

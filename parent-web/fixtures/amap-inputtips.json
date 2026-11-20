@@ -1,0 +1,38 @@
+{
+ "status": "1",
+ "count": "3",
+ "info": "OK",
+ "infocode": "10000",
+ "tips": [
+  {
+   "id": "B0FFFAB6J2",
+   "name": "杭州市文三街小学",
+   "district": "浙江省杭州市西湖区",
+   "adcode": "330106",
+   "location": "120.147358,30.278221",
+   "address": "文三路 252 号",
+   "typecode": "141203",
+   "city": []
+  },
+  {
+   "id": "B0FFG1XQ9N",
+   "name": "杭州学军中学(西溪校区)",
+   "district": "浙江省杭州市西湖区",
+   "adcode": "330106",
+   "location": "120.131054,30.276592",
+   "address": "文三路 37 号",
+   "typecode": "141202",
+   "city": []
+  },
+  {
+   "id": [],
+   "name": "小学",
+   "district": "浙江省杭州市西湖区",
+   "adcode": "330106",
+   "location": [],
+   "address": [],
+   "typecode": "141203",
+   "city": []
+  }
+ ]
+}

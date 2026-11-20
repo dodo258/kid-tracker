@@ -1,0 +1,13 @@
+{
+  "name": "still-after-update",
+  "title": "11-20 两台装 11.0.16：装完更新、App 重启后接着静止，一直在屋里不动，从没有过主坐标（三星），只有网络估算",
+  "start": "2026-11-20T23:53:00+08:00",
+  "seed": 41,
+  "speed": 20,
+  "fresh": true,
+  "restored": "still",
+  "segments": [
+    {"kind": "stay", "seconds": 3600, "fix": "wifi", "wifi": "fixed"}
+  ],
+  "events": []
+}

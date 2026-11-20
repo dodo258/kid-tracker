@@ -1,0 +1,32 @@
+[
+ {
+  "id": 1,
+  "name": "小宝",
+  "uniqueId": "861234567890123",
+  "status": "online",
+  "disabled": false,
+  "lastUpdate": null,
+  "positionId": 0,
+  "groupId": 0,
+  "phone": null,
+  "model": null,
+  "contact": null,
+  "category": null,
+  "attributes": {}
+ },
+ {
+  "id": 2,
+  "name": "大宝",
+  "uniqueId": "861234567890456",
+  "status": "online",
+  "disabled": false,
+  "lastUpdate": null,
+  "positionId": 0,
+  "groupId": 0,
+  "phone": null,
+  "model": null,
+  "contact": null,
+  "category": null,
+  "attributes": {}
+ }
+]

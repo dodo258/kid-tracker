@@ -1,0 +1,25 @@
+{
+  "name": "huawei-breath-delay",
+  "title": "静止 45 分钟，华为把一次呼吸推迟 5 分钟（隔 10 分钟），另一次推迟 9 分钟（隔 14 分钟）",
+  "start": "2026-11-20T14:00:00+08:00",
+  "seed": 15,
+  "speed": 60,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 2700
+    }
+  ],
+  "events": [
+    {
+      "type": "breath_delay",
+      "at": 900,
+      "seconds": 300
+    },
+    {
+      "type": "breath_delay",
+      "at": 1800,
+      "seconds": 540
+    }
+  ]
+}

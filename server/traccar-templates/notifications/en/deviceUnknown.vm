@@ -1,0 +1,13 @@
+## 超过 status.timeout（900 秒 = 15 分钟）没有上报
+#set($time = $dateTool.format('M月d日 HH:mm:ss', $event.eventTime, $locale, $timezone))
+#set($subject = "⚠️ $device.name：15 分钟没有上报")
+#set($n = "
+")
+#set($digest = "⚠️ $device.name：15 分钟没有上报${n}时间：$time${n}可能原因：没网、关机，或 App 被系统停掉${n}恢复上报后会再通知${n}查看：$webUrl/m/")
+<!DOCTYPE html>
+<html>
+<body>
+$esc.html($digest).replace('
+', '<br>')
+</body>
+</html>

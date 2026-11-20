@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 呼吸闹钟用精确闹钟（打盹时也按时响）：Android 13+ 的 USE_EXACT_ALARM 安装即授予；12 和不认它的系统靠 SCHEDULE_EXACT_ALARM。
+         侧载自用不上 Google Play，所以能用 USE_EXACT_ALARM（DECISIONS「精确闹钟权限」） -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- 高德定位：Wi-Fi 和基站定位要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <!-- directBootAware：开机后孩子还没解锁时也要恢复上报（DeviceStorage.kt、BootReceiver.kt）。
+         这一套（启动、前台服务、开机广播、呼吸闹钟、告警补发）只用设备保护存储；高德定位服务解锁后才用，不标 -->
+    <application>
+        <provider
+            android:name=".TrackerStartup"
+            android:authorities="${applicationId}.traccar.startup"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="200" />
+        <activity
+            android:name=".PermissionActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service
+            android:name=".TrackerService"
+            android:directBootAware="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+        <receiver
+            android:name=".BootReceiver"
+            android:directBootAware="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".BreathReceiver"
+            android:directBootAware="true"
+            android:exported="false" />
+        <!-- 有没发出去的告警时，联网后把进程叫起来补发（AlertRetryJob.kt） -->
+        <service
+            android:name=".AlertRetryJob"
+            android:directBootAware="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 高德定位服务 -->
+        <service
+            android:name="com.amap.api.location.APSService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+    </application>
+
+</manifest>

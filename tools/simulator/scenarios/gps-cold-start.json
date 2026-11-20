@@ -1,0 +1,44 @@
+{
+  "name": "gps-cold-start",
+  "title": "出门时 GPS 冷启动 50 秒，先只有基站定位（精度 500–1200 米）",
+  "start": "2026-11-20T07:28:00+08:00",
+  "seed": 17,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 240
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          120,
+          500
+        ],
+        [
+          60,
+          400
+        ]
+      ],
+      "acc": {
+        "cell": [
+          500,
+          1200
+        ]
+      }
+    },
+    {
+      "kind": "stay",
+      "seconds": 120,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "cold_start",
+      "from": 240,
+      "to": 290
+    }
+  ]
+}

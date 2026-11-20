@@ -1,0 +1,53 @@
+{
+  "name": "walk-school-jumps",
+  "title": "上学路上走路，带两处侧跳点（1 个点偏 80 米、连着 3 个点偏 140 米）",
+  "start": "2026-11-20T07:20:00+08:00",
+  "seed": 11,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 150
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          90,
+          320
+        ],
+        [
+          0,
+          260
+        ],
+        [
+          90,
+          240
+        ],
+        [
+          180,
+          120
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 180,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "side_jump",
+      "at": 330,
+      "points": 1,
+      "meters": 80
+    },
+    {
+      "type": "side_jump",
+      "at": 600,
+      "points": 3,
+      "meters": 140
+    }
+  ]
+}

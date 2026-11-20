@@ -1,0 +1,46 @@
+-- 告警发件箱（上报端 v2 第五步）：先存这里，服务器回 2xx 才填 sentAt。position 是整条上报（Position 的 JSON，含 alarm）；
+-- ready = 0 是求救还在等新鲜的卫星点，等不到也会在时限后只报时间
+CREATE TABLE Alert (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    alarm TEXT NOT NULL,
+    time INTEGER NOT NULL,
+    position TEXT NOT NULL,
+    ready INTEGER NOT NULL DEFAULT 1,
+    sentAt INTEGER
+);
+
+insert:
+INSERT INTO Alert(alarm, time, position, ready) VALUES (?, ?, ?, ?);
+
+lastId:
+SELECT last_insert_rowid();
+
+selectById:
+SELECT id, alarm, time, position, ready, sentAt FROM Alert WHERE id = ?;
+
+selectPending:
+SELECT id, alarm, time, position, ready, sentAt FROM Alert WHERE sentAt IS NULL ORDER BY id ASC;
+
+selectPendingByAlarm:
+SELECT id, alarm, time, position, ready, sentAt FROM Alert WHERE sentAt IS NULL AND alarm = ? ORDER BY id ASC LIMIT 1;
+
+locate:
+UPDATE Alert SET position = ?, ready = 1 WHERE id = ? AND sentAt IS NULL;
+
+markSent:
+UPDATE Alert SET sentAt = ? WHERE id = ? AND sentAt IS NULL;
+
+countPending:
+SELECT COUNT(*) FROM Alert WHERE sentAt IS NULL;
+
+-- 发出去的只留最近 :keep 条（查「报没报过」够用）
+trimSent:
+DELETE FROM Alert WHERE sentAt IS NOT NULL AND id NOT IN (
+    SELECT id FROM Alert WHERE sentAt IS NOT NULL ORDER BY id DESC LIMIT :keep
+);
+
+-- 没发出去的超过 :keep 条时丢最旧的；求救排在最前面留着
+trimPending:
+DELETE FROM Alert WHERE sentAt IS NULL AND id NOT IN (
+    SELECT id FROM Alert WHERE sentAt IS NULL ORDER BY alarm = 'sos' DESC, id DESC LIMIT :keep
+);

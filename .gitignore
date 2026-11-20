@@ -1,0 +1,16 @@
+# 本机生成和私密文件，不进仓库
+local.properties
+key.properties
+*.jks
+*.keystore
+.env
+.DS_Store
+node_modules/
+dist/
+build/
+.dart_tool/
+.gradle/
+.kotlin/
+.flutter-plugins
+.flutter-plugins-dependencies
+__pycache__/

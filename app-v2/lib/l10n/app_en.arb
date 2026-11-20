@@ -1,0 +1,632 @@
+{
+  "trackingTitle": "Tracking",
+  "settingsTitle": "Settings",
+  "statusTitle": "Logs",
+  "saveButton": "Save",
+  "cancelButton": "Cancel",
+  "okButton": "OK",
+  "locationButton": "Send location",
+  "statusButton": "Show status",
+  "settingsButton": "Change settings",
+  "invalidValue": "Invalid value",
+  "disabledValue": "Disabled",
+  "idLabel": "Device identifier",
+  "urlLabel": "Server URL",
+  "accuracyLabel": "Location accuracy",
+  "highestAccuracyLabel": "Highest",
+  "highAccuracyLabel": "High",
+  "mediumAccuracyLabel": "Medium",
+  "lowAccuracyLabel": "Low",
+  "intervalLabel": "Interval (seconds)",
+  "fastestIntervalLabel": "Fastest interval (seconds)",
+  "distanceLabel": "Distance (meters)",
+  "angleLabel": "Angle (degrees)",
+  "heartbeatLabel": "Stationary heartbeat (seconds)",
+  "bufferLabel": "Offline buffering",
+  "wakelockLabel": "Wake lock",
+  "stopDetectionLabel": "Stop detection",
+  "preferPlatformProvidersLabel": "Use system location",
+  "trackingLabel": "Continuous tracking",
+  "advancedLabel": "Advanced settings",
+  "passwordLabel": "Password",
+  "optimizationMessage": "To ensure reliable tracking, please disable battery optimization for this app.",
+  "passwordError": "Wrong password",
+  "startAction": "Start service",
+  "stopAction": "Stop service",
+  "sosAction": "Send SOS",
+  "disclosureMessage": "This app collects location and activity data in the background and sends it to the configured server.",
+  "configurationMessage": "Apply new configuration?",
+  "appTitle": "Location Service",
+  "notificationText": "Running",
+  "sendingMessage": "Sending…",
+  "sosSentMessage": "SOS sent to your parent",
+  "sosQueuedMessage": "SOS not sent yet. It will be sent automatically when the network is back. Send it again, or call your parent.",
+  "sendErrorMessage": "Not sent: {reason}",
+  "@sendErrorMessage": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "sosConfirmTitle": "Send SOS?",
+  "sosConfirmMessage": "Your current location and an SOS will be sent to your parent.",
+  "sosConfirmButton": "Send SOS",
+  "quickSosCloseButton": "Close",
+  "quickSosRetryButton": "Send SOS again",
+  "askAiPrompt": "My phone is {device}. How do I turn on \"{item}\" for the app \"定位服务\"?",
+  "@askAiPrompt": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      },
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "bufferHint": "Off: locations recorded without network are lost",
+  "bufferOffWarning": "With offline buffering off, locations recorded without network are dropped and your parent sees a gap. Turn it off anyway?",
+  "changePasswordButton": "Change password",
+  "changePasswordHint": "Then set a new one",
+  "checkExactAlarmNa": "Not needed on this Android version",
+  "checklistAllDone": "All done",
+  "checklistAutoSection": "Checked automatically",
+  "checklistButton": "Reliability settings",
+  "checklistDeviceLabel": "This phone: {device}",
+  "@checklistDeviceLabel": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "checklistIntroAuto": "Everything is checked automatically, nothing to tick by hand. The page re-reads when you come back; long-press a row to copy a question for an AI",
+  "checklistNotNeededSection": "Not needed on this phone ({count})",
+  "@checklistNotNeededSection": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checklistPending": "{count} still being verified",
+  "checklistRemaining": "{count, plural, =1{1 item left} other{{count} items left}}",
+  "@checklistRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "checklistSuggestSection": "Suggested (doesn't block tracking)",
+  "checklistTitle": "Settings for reliable tracking",
+  "checklistVendorNote": "The system can't report these. While tracking is on, the app judges them by whether it recovers after a reboot, reports on time with the screen locked, and can send with the screen locked",
+  "checklistVendorSection": "Phone maker settings (judged by behaviour)",
+  "confirmPasswordHint": "Same digits as before",
+  "confirmPasswordTitle": "Enter it again",
+  "copiedMessage": "Copied. Paste it into an AI assistant.",
+  "copyButton": "Copy",
+  "currentPasswordTitle": "Enter the current password",
+  "deleteKey": "Delete",
+  "disablePasswordButton": "Turn off password",
+  "disablePasswordHint": "Enter the current password to confirm. The app will then open without one.",
+  "disablePasswordTitle": "Turn off the app password",
+  "fallbackPath": "Could not open it directly, opened the nearest settings page instead. Look for: {path}",
+  "@fallbackPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "goToEnableButton": "Turn on",
+  "goToSettingsButton": "Open settings",
+  "guardAdminNotActivated": "Uninstall protection was not activated.",
+  "guardAdminTitle": "Uninstall protection (device admin)",
+  "guardAdminWhy": "The child cannot uninstall this app until it is turned off here with the password.",
+  "guardLost": "It was turned off; turn it on again (an alarm is sent to the parent when this happens).",
+  "guardNeedPassword": "Set an app password first: it is needed to turn the protection off.",
+  "guardSection": "Protection",
+  "idCopiedMessage": "Device identifier copied",
+  "itemAssociatedLaunch": "{brand, select, other{Secondary launch}}",
+  "@itemAssociatedLaunch": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemAssociatedLaunchPath": "{brand, select, other{App launch → this app → Secondary launch}}",
+  "@itemAssociatedLaunchPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemAssociatedLaunchWhy": "Lets other system components wake the app, so it recovers faster.",
+  "itemAutostart": "{brand, select, huawei{Auto-launch} honor{Auto-launch} other{Autostart}}",
+  "@itemAutostart": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemAutostartPath": "{brand, select, huawei{Phone Manager → App launch → this app → turn off Manage automatically → Auto-launch} honor{Phone Manager → App launch → this app → turn off Manage automatically → Auto-launch} other{Look for Autostart in app info or the security app; if your system has none, just tick it.}}",
+  "@itemAutostartPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemAutostartWhy": "Lets the app start itself again after it is stopped or the phone restarts.",
+  "itemBackgroundActivity": "{brand, select, other{Run in background}}",
+  "@itemBackgroundActivity": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBackgroundActivityPath": "{brand, select, other{App launch → this app → Run in background}}",
+  "@itemBackgroundActivityPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBackgroundActivityWhy": "Keeps reporting after the screen locks.",
+  "itemBackgroundLocation": "{brand, select, other{Allow all the time}}",
+  "@itemBackgroundLocation": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBackgroundLocationPath": "{brand, select, other{App info → Permissions → Location → Allow all the time}}",
+  "@itemBackgroundLocationPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBackgroundLocationWhy": "Otherwise the app gets no location once it is in the background.",
+  "itemBackgroundRestriction": "{brand, select, other{Not \"Restricted\"}}",
+  "@itemBackgroundRestriction": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBackgroundRestrictionPath": "{brand, select, other{App info → App battery usage → do not choose Restricted}}",
+  "@itemBackgroundRestrictionPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBackgroundRestrictionWhy": "When restricted, the app cannot run in the background at all.",
+  "itemBatteryOptimization": "{brand, select, samsung{Unrestricted} other{Unrestricted}}",
+  "@itemBatteryOptimization": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBatteryOptimizationPath": "{brand, select, other{App info → App battery usage → Unrestricted}}",
+  "@itemBatteryOptimizationPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemBatteryOptimizationWhy": "Battery optimization pauses the app after the screen locks.",
+  "itemDataSaver": "{brand, select, other{Data saver: unrestricted for this app}}",
+  "@itemDataSaver": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemDataSaverPath": "{brand, select, other{Settings → Network → Data saver → Unrestricted data → turn on this app}}",
+  "@itemDataSaverPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemDataSaverWhy": "With data saver on, reports may not get through.",
+  "itemExactAlarm": "{brand, select, other{Alarms & reminders}}",
+  "@itemExactAlarm": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemExactAlarmPath": "{brand, select, other{App info → Alarms & reminders}}",
+  "@itemExactAlarmPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemExactAlarmWhy": "Lets heartbeats fire on time.",
+  "itemHibernation": "{brand, select, other{Pause app activity if unused: off}}",
+  "@itemHibernation": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemHibernationPath": "{brand, select, other{App info → Pause app activity if unused → off}}",
+  "@itemHibernationPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemHibernationWhy": "If on, the app is paused and loses its permissions when not opened for months.",
+  "itemLocationService": "{brand, select, other{Use location}}",
+  "@itemLocationService": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemLocationServicePath": "{brand, select, other{Settings → Location → Use location}}",
+  "@itemLocationServicePath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemLocationServiceWhy": "The system-wide location switch; when off, no app can get a location.",
+  "itemMotionPermission": "{brand, select, other{Allow physical activity}}",
+  "@itemMotionPermission": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemMotionPermissionPath": "{brand, select, other{App info → Permissions → Physical activity → Allow}}",
+  "@itemMotionPermissionPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemMotionPermissionWhy": "Without it walking and riding are noticed minutes later.",
+  "itemNetworkAccess": "{brand, select, other{Network access: mobile data and Wi-Fi allowed}}",
+  "@itemNetworkAccess": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNetworkAccessPath": "{brand, select, huawei{Phone Manager → Data usage → Network access → this app → allow Mobile data and Wi-Fi} honor{Phone Manager → Data usage → Network access → this app → allow Mobile data and Wi-Fi} xiaomi{App info → Restrict data usage → allow both} vivo{Search Settings for \"Network access\" → this app → allow both} other{Search Settings for \"network\" → this app → allow Mobile data and Wi-Fi}}",
+  "@itemNetworkAccessPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNetworkAccessWhy": "Without it the app can locate but not send.",
+  "itemNotifications": "{brand, select, other{Allow notifications}}",
+  "@itemNotifications": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNotificationsPath": "{brand, select, other{App info → Notifications → Allow notifications}}",
+  "@itemNotificationsPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemNotificationsWhy": "Without the tracking notification the service is killed more easily.",
+  "itemPowerSave": "{brand, select, other{Battery saver: off}}",
+  "@itemPowerSave": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPowerSavePath": "{brand, select, other{Settings → Battery → turn off Battery saver}}",
+  "@itemPowerSavePath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPowerSaveWhy": "Turn battery saver off, and don't let it turn on automatically at low battery.",
+  "itemPowerSaving": "{brand, select, xiaomi{Battery saver: No restrictions} samsung{Never sleeping apps} vivo{Allow high background power consumption} other{Allow background activity}}",
+  "@itemPowerSaving": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPowerSavingPath": "{brand, select, xiaomi{App info → Battery saver → No restrictions} samsung{Settings → Battery → Background usage limits → Never sleeping apps → add this app} vivo{Settings → Battery → Background power consumption management → this app → Allow} other{App info → Battery usage → Allow background activity}}",
+  "@itemPowerSavingPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPowerSavingWhy": "{brand, select, other{The manufacturer's own power saving stops background apps separately from Android's battery optimization.}}",
+  "@itemPowerSavingWhy": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPreciseLocation": "{brand, select, other{Use precise location}}",
+  "@itemPreciseLocation": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPreciseLocationPath": "{brand, select, other{App info → Permissions → Location → Use precise location}}",
+  "@itemPreciseLocationPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemPreciseLocationWhy": "With approximate location only, the position can be off by kilometres.",
+  "itemRecentsLock": "{brand, select, other{Lock}}",
+  "@itemRecentsLock": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemRecentsLockPath": "{brand, select, other{While this app is open, open recent apps and lock its card (long-press or pull it down, choose Lock). Once you leave the app its card is hidden there.}}",
+  "@itemRecentsLockPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemRecentsLockWhy": "\"Clear all\" in recent apps will not close it.",
+  "itemScreenOffNetwork": "{brand, select, huawei{Stay connected during sleep} honor{Stay connected during sleep} xiaomi{Turn off mobile data when locked: never} other{Sleep standby optimization: off}}",
+  "@itemScreenOffNetwork": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemScreenOffNetworkPath": "{brand, select, huawei{Settings → Battery → More battery settings → turn on \"Stay connected during sleep\"} honor{Settings → Battery → More battery settings → turn on \"Stay connected during sleep\"} xiaomi{Settings → Battery → More settings → \"Turn off mobile data when device is locked\" → Never} oppo{Settings → Battery → More settings → turn off \"Sleep standby optimization\"} vivo{Settings → Battery → turn off \"Sleep standby optimization\"} other{Search Settings for \"sleep\" and keep the network on when locked}}",
+  "@itemScreenOffNetworkPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemScreenOffNetworkWhy": "Otherwise the network drops soon after locking.",
+  "itemWifiScan": "{brand, select, other{Wi-Fi scanning}}",
+  "@itemWifiScan": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemWifiScanPath": "{brand, select, other{Search Settings for \"Wi-Fi scanning\" and turn it on}}",
+  "@itemWifiScanPath": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "itemWifiScanWhy": "Without it, indoor locations can be off by hundreds of meters or more.",
+  "lastReportLabel": "Last successful report",
+  "lastReportNever": "No successful report yet",
+  "locationFailedMessage": "Location not sent: maybe no network or no fix yet. Try again in a moment.",
+  "locationSentMessage": "Location sent to your parent",
+  "locationSourceAutoLabel": "Auto (prefer AMap)",
+  "locationSourceHint": "System only: AMap is not used, indoor fixes often fail",
+  "locationSourceLabel": "Location source",
+  "locationSourceSystemLabel": "System location only",
+  "lockHint": "This is the app's own password, not the phone's screen lock",
+  "lockTitle": "Enter the app password",
+  "newPasswordTitle": "Enter a new password",
+  "notApplicableMessage": "Not available on this Android version",
+  "passwordChanged": "Password changed",
+  "passwordDisabled": "App password turned off",
+  "passwordItem": "App password",
+  "passwordLockedOut": "{count} wrong tries in a row. The app will close.",
+  "@passwordLockedOut": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "passwordMismatch": "They didn't match. Start again.",
+  "passwordNotSet": "Not set",
+  "passwordRemaining": "{count, plural, =1{1 try left} other{{count} tries left}}",
+  "@passwordRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "passwordWhy": "Once set, the app asks for it every time it is opened, so the child cannot turn off tracking or change settings. This is the app's own password, unrelated to the phone's screen lock.",
+  "passwordWrongRemaining": "{count, plural, =1{Wrong password, 1 try left} other{Wrong password, {count} tries left}}",
+  "@passwordWrongRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pendingActionConfig": "Change server and device settings",
+  "pendingActionGeneric": "The previous action needs the password. Continue now?",
+  "pendingActionStart": "Turn tracking on",
+  "pendingActionStop": "Stop tracking (the parent will be notified)",
+  "pendingActionTitle": "Continue?",
+  "promptFirstRun": "First time here: set up the settings needed for reliable tracking, or the system may stop the app in the background.",
+  "promptIncomplete": "{count, plural, =1{1 setting for reliable tracking is not done} other{{count} settings for reliable tracking are not done}}; the system may stop the app in the background.",
+  "@promptIncomplete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "promptNoPassword": "No app password: the child can turn off tracking",
+  "promptOpenButton": "Open checklist",
+  "promptSetPasswordButton": "Set password",
+  "promptSystemUpdated": "The system was updated and may have reset some settings. Open the checklist and confirm again.",
+  "recorderClearButton": "Delete old",
+  "recorderExportTitle": "Export recordings",
+  "recorderOff": "Records sensors, Wi-Fi and location every 2 seconds, kept on this phone only. {files} files, {mb} MB",
+  "recorderOn": "Recording: {rows} rows this time, {files} files, {mb} MB. Uses more battery, turn off when done",
+  "recorderRefreshButton": "Refresh",
+  "recorderShareButton": "Share",
+  "recorderStopped": "Recording stopped: {reason}",
+  "recorderTitle": "Sensor recording (testing)",
+  "reportOverdueMessage": "Nothing reported for over 3 heartbeat periods. Check the reliability settings.",
+  "scanConfigTooltip": "Scan configuration",
+  "sendNoPermissionMessage": "Can't send without location permission. Allow it in system settings.",
+  "setPasswordButton": "Set",
+  "setPasswordHint": "{min} to {max} digits",
+  "@setPasswordHint": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "setPasswordTitle": "Set the app password",
+  "startFailedMessage": "Failed to start tracking. Check location permissions.",
+  "techChangeConfirmButton": "Turn off anyway",
+  "techChangeTitle": "This affects reliability",
+  "techOptionsTitle": "Technical options (usually leave alone)",
+  "trackingBlocked": "{count, plural, =1{1 setting is not done yet} other{{count} settings are not done yet}}. Tick every item in the checklist before turning on tracking.",
+  "@trackingBlocked": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "updateAllowInstall": "Allow this app to install updates, then come back to install",
+  "updateAvailable": "New version available, tap to update",
+  "updateChecksumFailed": "The downloaded file doesn't match, not installing",
+  "updateDownloadFailed": "Download failed. Check the network and tap again",
+  "updateDownloading": "Downloading new version",
+  "updateIdentityFailed": "The downloaded file is not an official build of this app, not installed",
+  "updateInstallFailed": "Couldn't open the installer",
+  "updateReady": "Downloaded, tap to install",
+  "vendorBadBreath": "Not working: reports are late with the screen locked",
+  "vendorBadBreathMinutes": "Not working: reports were {minutes} min late with the screen locked",
+  "vendorBadReboot": "Not working: did not resume after a reboot until the app was opened",
+  "vendorBadSend": "Not working: can't send with the screen locked, only after it turns on",
+  "vendorOkBreath": "Working: reports on time with the screen locked",
+  "vendorOkReboot": "Working: resumed by itself after a reboot",
+  "vendorOkSend": "Working: can send with the screen locked",
+  "vendorPending": "Not verified yet: ",
+  "vendorPendingBreath": "leave the phone locked for 15+ minutes with tracking on, then check back",
+  "vendorPendingReboot": "restart the phone with tracking on, don't open the app, check back in a few minutes",
+  "vendorPendingSend": "leave the phone locked for a while with tracking on, then check back",
+  "vendorRecheckButton": "Fixed it",
+  "verifyHint": "A parent needs to enter it to continue",
+  "wakelockHint": "Usually off. On: keeps the phone awake when locked, uses more battery",
+  "@checklistPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@recorderOff": {
+    "placeholders": {
+      "files": {
+        "type": "int"
+      },
+      "mb": {
+        "type": "String"
+      }
+    }
+  },
+  "@recorderOn": {
+    "placeholders": {
+      "rows": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      },
+      "mb": {
+        "type": "String"
+      }
+    }
+  },
+  "@recorderStopped": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "@vendorBadBreathMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "faultSection": "Run log",
+  "faultNote": "The latest problem the app ran into while reporting and how it handled it",
+  "faultNone": "No problems recorded",
+  "faultRescue": "Reporting got stuck and the app restarted location or tracking",
+  "faultDegraded": "AMap location failed; system location is used for this session",
+  "faultStorage": "Storage couldn't be written (maybe full); points are kept in memory and still sent",
+  "faultDropped": "Too many unsent records; the oldest were dropped",
+  "faultCrash": "A background error happened and was recovered"
+}

@@ -1,0 +1,13 @@
+## 失联后重新上报
+#set($time = $dateTool.format('M月d日 HH:mm:ss', $event.eventTime, $locale, $timezone))
+#set($subject = "✅ $device.name：恢复上报")
+#set($n = "
+")
+#set($digest = "✅ $device.name：恢复上报${n}时间：$time${n}查看：$webUrl/m/")
+<!DOCTYPE html>
+<html>
+<body>
+$esc.html($digest).replace('
+', '<br>')
+</body>
+</html>

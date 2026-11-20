@@ -1,0 +1,39 @@
+{
+  "name": "process-killed",
+  "title": "走路时进程被杀 4 分钟，重启后接着报",
+  "start": "2026-11-20T17:10:00+08:00",
+  "seed": 16,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 60,
+      "wifi": "none"
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          0,
+          400
+        ],
+        [
+          90,
+          900
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 120,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "killed",
+      "from": 420,
+      "to": 660
+    }
+  ]
+}

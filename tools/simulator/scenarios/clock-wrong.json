@@ -1,0 +1,42 @@
+{
+  "name": "clock-wrong",
+  "title": "补充：手机时间先快 7 分钟，走到一半变成快 12 分钟（服务器 filter.future=86400，点照存，家长页显示手机时间不对）",
+  "start": "2026-11-20T15:40:00+08:00",
+  "seed": 19,
+  "speed": 30,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 60,
+      "wifi": "none"
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          0,
+          700
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 1080,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "clock",
+      "from": 0,
+      "to": 400,
+      "seconds": 420
+    },
+    {
+      "type": "clock",
+      "from": 400,
+      "to": 99999,
+      "seconds": 720
+    }
+  ]
+}

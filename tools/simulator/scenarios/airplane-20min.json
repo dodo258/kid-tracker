@@ -1,0 +1,20 @@
+{
+  "name": "airplane-20min",
+  "title": "补充：在家开飞行模式 20 分钟（真失联，应在 15 分钟时出现、恢复后消失）",
+  "start": "2026-11-20T20:00:00+08:00",
+  "seed": 20,
+  "speed": 10,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 2100
+    }
+  ],
+  "events": [
+    {
+      "type": "airplane",
+      "from": 300,
+      "to": 1500
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+ "normal": [],
+ "track": [],
+ "stale": [],
+ "lost": [
+  {
+   "id": 501,
+   "attributes": {},
+   "deviceId": 1,
+   "type": "deviceUnknown",
+   "eventTime": "2026-11-16T06:40:00.000+00:00",
+   "positionId": 0,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 502,
+   "attributes": {
+    "alarm": "powerOff"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-16T06:30:00.000+00:00",
+   "positionId": 1056,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 503,
+   "attributes": {
+    "alarm": "lowBattery"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-16T05:52:00.000+00:00",
+   "positionId": 1057,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  }
+ ],
+ "lowbattery": [
+  {
+   "id": 504,
+   "attributes": {
+    "alarm": "lowBattery"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-16T08:21:00.000+00:00",
+   "positionId": 1058,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  }
+ ],
+ "alerts": [
+  {
+   "id": 505,
+   "attributes": {
+    "alarm": "general"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-16T05:15:00.000+00:00",
+   "positionId": 1059,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 506,
+   "attributes": {
+    "alarm": "tampering"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-16T04:02:00.000+00:00",
+   "positionId": 1060,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 507,
+   "attributes": {},
+   "deviceId": 1,
+   "type": "deviceUnknown",
+   "eventTime": "2026-11-15T14:25:00.000+00:00",
+   "positionId": 0,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 508,
+   "attributes": {
+    "alarm": "powerOff"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-15T14:10:00.000+00:00",
+   "positionId": 1061,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 509,
+   "attributes": {
+    "alarm": "lowBattery"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-15T13:47:00.000+00:00",
+   "positionId": 1062,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  }
+ ],
+ "dark": [],
+ "place": [
+  {
+   "id": 520,
+   "attributes": {},
+   "deviceId": 1,
+   "type": "geofenceEnter",
+   "eventTime": "2026-11-16T00:12:00.000+00:00",
+   "positionId": 1071,
+   "geofenceId": 12,
+   "maintenanceId": 0
+  },
+  {
+   "id": 521,
+   "attributes": {},
+   "deviceId": 1,
+   "type": "geofenceExit",
+   "eventTime": "2026-11-15T23:41:00.000+00:00",
+   "positionId": 1072,
+   "geofenceId": 11,
+   "maintenanceId": 0
+  },
+  {
+   "id": 522,
+   "attributes": {
+    "alarm": "lowBattery"
+   },
+   "deviceId": 1,
+   "type": "alarm",
+   "eventTime": "2026-11-15T13:05:00.000+00:00",
+   "positionId": 1073,
+   "geofenceId": 0,
+   "maintenanceId": 0
+  },
+  {
+   "id": 523,
+   "attributes": {},
+   "deviceId": 1,
+   "type": "geofenceEnter",
+   "eventTime": "2026-11-15T09:58:00.000+00:00",
+   "positionId": 1074,
+   "geofenceId": 11,
+   "maintenanceId": 0
+  }
+ ]
+}

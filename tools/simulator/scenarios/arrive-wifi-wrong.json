@@ -1,0 +1,36 @@
+{
+  "name": "arrive-wifi-wrong",
+  "title": "补充：走到同学家，屋里 Wi-Fi 位置库记错，网络定位都落在 400 米外一个固定点",
+  "start": "2026-11-20T10:00:00+08:00",
+  "seed": 21,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 60,
+      "wifi": "none"
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          0,
+          500
+        ]
+      ]
+    },
+    {
+      "kind": "indoor",
+      "seconds": 600
+    }
+  ],
+  "events": [
+    {
+      "type": "wifi_wrong",
+      "from": 418,
+      "to": 99999,
+      "east": 350,
+      "north": -200
+    }
+  ]
+}

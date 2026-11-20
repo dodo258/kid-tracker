@@ -1,0 +1,13 @@
+{
+  "name": "home-net-only",
+  "title": "11-19 P20：最后一个卫星点在 2.8 公里外，坐地铁回家一路没卫星，屋里卫星点都被挡，只有网络估算",
+  "start": "2026-11-20T18:40:00+08:00",
+  "seed": 31,
+  "speed": 20,
+  "segments": [
+    {"kind": "stay", "seconds": 90, "wifi": "none"},
+    {"kind": "bus", "legs": [[70, 2800]], "fix": "none", "wifi": "none"},
+    {"kind": "indoor", "seconds": 900, "fix": "wifi", "wifi": "fixed"}
+  ],
+  "events": []
+}

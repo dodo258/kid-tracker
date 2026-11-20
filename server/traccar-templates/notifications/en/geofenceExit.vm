@@ -1,0 +1,13 @@
+## 孩子离开常去地点
+#set($time = $dateTool.format('M月d日 HH:mm:ss', $event.eventTime, $locale, $timezone))
+#set($subject = "🚶 $device.name：离开 $geofence.name")
+#set($n = "
+")
+#set($digest = "🚶 $device.name：离开 $geofence.name${n}时间：$time#if($position && $position.address)${n}位置：$position.address#end${n}查看：$webUrl/m/")
+<!DOCTYPE html>
+<html>
+<body>
+$esc.html($digest).replace('
+', '<br>')
+</body>
+</html>

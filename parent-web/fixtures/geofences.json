@@ -1,0 +1,30 @@
+{
+ "1": [
+  {
+   "id": 11,
+   "name": "家",
+   "description": null,
+   "area": "CIRCLE (30.27439 120.140581, 100)",
+   "calendarId": 0,
+   "attributes": {}
+  },
+  {
+   "id": 12,
+   "name": "学校",
+   "description": null,
+   "area": "CIRCLE (30.276749 120.145126, 200)",
+   "calendarId": 0,
+   "attributes": {}
+  }
+ ],
+ "2": [
+  {
+   "id": 13,
+   "name": "奶奶家",
+   "description": null,
+   "area": "CIRCLE (30.2874 120.1532, 200)",
+   "calendarId": 0,
+   "attributes": {}
+  }
+ ]
+}

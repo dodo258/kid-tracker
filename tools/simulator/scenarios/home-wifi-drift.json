@@ -1,0 +1,43 @@
+{
+  "name": "home-wifi-drift",
+  "title": "在家：先静止，屋里走动时 Wi-Fi 定位一路漂到 700 米外，又被旧版上报端误判成移动中 3 分钟（每 10 秒一个乱漂的网络点）",
+  "start": "2026-11-20T06:50:00+08:00",
+  "seed": 13,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 300
+    },
+    {
+      "kind": "indoor",
+      "seconds": 600
+    },
+    {
+      "kind": "stay",
+      "seconds": 600
+    }
+  ],
+  "events": [
+    {
+      "type": "drift",
+      "from": 360,
+      "to": 840,
+      "meters": 700,
+      "bearing": 60
+    },
+    {
+      "type": "misjudge_moving",
+      "from": 960,
+      "to": 1140,
+      "interval": 10
+    },
+    {
+      "type": "drift",
+      "from": 1020,
+      "to": 1140,
+      "meters": 400,
+      "bearing": 200
+    }
+  ]
+}

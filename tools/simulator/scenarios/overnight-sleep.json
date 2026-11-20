@@ -1,0 +1,31 @@
+{
+  "name": "overnight-sleep",
+  "title": "晚上睡觉一整晚（8.5 小时，充着电，只呼吸；三次呼吸各推迟 5 分钟）",
+  "start": "2026-11-20T22:30:00+08:00",
+  "seed": 18,
+  "speed": 600,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 30600,
+      "charging": true
+    }
+  ],
+  "events": [
+    {
+      "type": "breath_delay",
+      "at": 3600,
+      "seconds": 300
+    },
+    {
+      "type": "breath_delay",
+      "at": 12000,
+      "seconds": 300
+    },
+    {
+      "type": "breath_delay",
+      "at": 20000,
+      "seconds": 300
+    }
+  ]
+}

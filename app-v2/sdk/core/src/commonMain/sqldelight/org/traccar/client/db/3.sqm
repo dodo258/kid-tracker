@@ -1,0 +1,2 @@
+-- 判断层（上报端 v2 第三步）的上报字段：state、motion、provider、steps、bumps、net，存成一段 JSON
+ALTER TABLE Position ADD COLUMN extras TEXT;

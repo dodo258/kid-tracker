@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 「孩子在哪」图标：地图上那个点（精度圈 + 白边圆点），全出血方形，系统自己切圆角 -->
+  <rect width="512" height="512" fill="#1e8e4e"/>
+  <circle cx="256" cy="256" r="196" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="256" cy="256" r="104" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="74" fill="#1e8e4e"/>
+</svg>

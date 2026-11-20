@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 防卸载：设备管理员（从根目录旧 App 搬来，文字一样） -->
+    <string name="guard_admin_description">定位服务的防卸载保护：开启后要先在 App 里用密码关闭才能卸载。</string>
+    <string name="guard_admin_explanation">激活后，要先在「定位服务」设置里用 App 密码关闭防护，才能卸载本 App。本 App 不使用任何管理权限。</string>
+    <string name="guard_admin_disable_warning">停用后本 App 可以被卸载，家长会收到提醒。</string>
+</resources>

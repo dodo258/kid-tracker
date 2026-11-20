@@ -1,0 +1,42 @@
+name: traccar_client
+description: "Traccar Client"
+publish_to: 'none'
+# 接着根目录旧 App（10.2.x，versionCode 187）往上：v2 从 11.0.0+300 起，旧 App 修严重问题时还有空号
+version: 11.0.17+317
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  # 原版 SDK v1.1.4 的源码在 app-v2/sdk/，Gradle 用 composite build 把 org.traccar:traccar-client-sdk 换成 sdk/core
+  traccar_client_sdk:
+    path: sdk/flutter
+  shared_preferences: ^2.5.5
+  quick_actions: ^1.1.1
+  shared_preferences_android: ^2.5.3
+  # mobile_scanner 只有 ML Kit 实现，会带进 Firebase 类；flutter_zxing 不依赖 GMS
+  flutter_zxing: ^3.1.1
+  flutter_secure_storage: ^11.2.0
+  app_links: ^7.0.0
+  app_settings: ^9.0.0
+  share_plus: ^13.3.1
+  managed_configurations: ^1.2.0
+  # 旧 App 存的是 App 密码的 PBKDF2 哈希，覆盖安装后要认得
+  crypto: ^3.0.6
+  # 检查更新：读本机 versionCode 和服务器上的比
+  package_info_plus: ^10.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  generate: true

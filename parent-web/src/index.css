@@ -1,0 +1,408 @@
+@import 'tailwindcss';
+
+/* 设计语言（方案 docs/specs/2026-11-18-parent-web-polish.md）：「地图上的一张便签」。
+   家长打开就要安心：地图是主角，卡片是纸白的，第一行状态句是全页唯一的大字，其余都安静。
+   颜色只有五个有名字的：墨（正文）、灰（次要）、纸（卡片底）、安（只给「在线、在动」的小圆点和状态句前缀）、
+   警（只给失联、低电、告警）。不用灰底圆角块当按钮；阴影只有卡片一层；字是苹方，数字等宽。
+   深浅色：默认跟随系统，设置里可以固定（html[data-theme]），两处的深色值一样。 */
+:root {
+  --ink: #1c1f23;
+  --mute: #6b7076;
+  --paper: #ffffff;
+  --an: #1f8a4c;
+  --jing: #c2410c;
+  /* 由上面五个派生：细线、按下时的底、地图上浮着的控件底、安的浅底（选中的范围） */
+  --line: rgb(28 31 35 / 0.1);
+  --press: rgb(28 31 35 / 0.05);
+  --float: rgb(255 255 255 / 0.96);
+  --an-soft: rgb(31 138 76 / 0.1);
+  --on-an: #ffffff;
+  --map: #ece9e1;
+  --place: #3a3d42;
+  --marker: #1c1f23;
+  --shadow-card: 0 0 0 0.5px rgb(28 31 35 / 0.08), 0 4px 20px rgb(28 31 35 / 0.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ink: #e9eaec;
+    --mute: #9a9fa6;
+    --paper: #1a1c1f;
+    --an: #3fb76f;
+    --jing: #f0804a;
+    --line: rgb(233 234 236 / 0.12);
+    --press: rgb(233 234 236 / 0.07);
+    --float: rgb(38 41 45 / 0.96);
+    --an-soft: rgb(63 183 111 / 0.16);
+    --on-an: #08200f;
+    --map: #1f1f1f;
+    --place: #d4d6da;
+    --marker: #2a2d31;
+    --shadow-card: 0 0 0 0.5px rgb(255 255 255 / 0.08), 0 4px 20px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --ink: #e9eaec;
+  --mute: #9a9fa6;
+  --paper: #1a1c1f;
+  --an: #3fb76f;
+  --jing: #f0804a;
+  --line: rgb(233 234 236 / 0.12);
+  --press: rgb(233 234 236 / 0.07);
+  --float: rgb(38 41 45 / 0.96);
+  --an-soft: rgb(63 183 111 / 0.16);
+  --on-an: #08200f;
+  --map: #1f1f1f;
+  --place: #d4d6da;
+  --marker: #2a2d31;
+  --shadow-card: 0 0 0 0.5px rgb(255 255 255 / 0.08), 0 4px 20px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-*: initial;
+  --font-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --text-*: initial;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  /* 字号四级：状态句 22 / 名字 17 / 正文 15 / 次要 13 */
+  --text-status: 22px;
+  --text-status--line-height: 28px;
+  --text-name: 17px;
+  --text-name--line-height: 22px;
+  --text-body: 15px;
+  --text-body--line-height: 21px;
+  --text-note: 13px;
+  --text-note--line-height: 18px;
+  --color-ink: var(--ink);
+  --color-mute: var(--mute);
+  --color-paper: var(--paper);
+  --color-an: var(--an);
+  --color-jing: var(--jing);
+  --color-line: var(--line);
+  --color-press: var(--press);
+  --color-float: var(--float);
+  --color-an-soft: var(--an-soft);
+  --color-on-an: var(--on-an);
+  --color-map: var(--map);
+  /* 圆角三级：卡片 16、按钮 10、小标签 6 */
+  --radius-card: 16px;
+  --radius-control: 10px;
+  --radius-tag: 6px;
+  --shadow-card: var(--shadow-card);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* 地图 */
+.maplibregl-map {
+  font-family: var(--font-sans);
+}
+
+.maplibregl-ctrl-top-right {
+  top: calc(max(12px, env(safe-area-inset-top)) + 38px);
+}
+
+/* 选点时顶部是搜索框（高 44），版权字挪到它下面 */
+[data-picking] .maplibregl-ctrl-top-right {
+  top: calc(max(12px, env(safe-area-inset-top)) + 52px);
+}
+
+.maplibregl-ctrl-top-right .maplibregl-ctrl-attrib.maplibregl-ctrl {
+  margin: 0 12px 0 0;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--float);
+  color: var(--mute);
+  font-size: 10px;
+}
+
+.maplibregl-ctrl-attrib-inner {
+  color: var(--mute);
+}
+
+/* 地图上的设备点：图标框只用来定位，点击只落在圆点和名字上 */
+.kid-icon {
+  pointer-events: none;
+}
+
+.kid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.kid-dot {
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+  border-radius: 50%;
+  background: var(--ring);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  isolation: isolate;
+}
+
+/* 位置是新的（≤10 分钟）才「呼吸」：外圈颜色的光晕一圈圈往外扩散，表示在线；有点久、失联的不动 */
+.kid-fresh .kid-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--ring);
+  animation: kid-breathe 2.4s ease-out infinite;
+}
+
+/* 光晕从圆点底下放大、变淡。透明度先在 0.5 秒里从 0 淡入再淡出（不在每圈开头从 0 跳到 0.5）：
+   iPhone 上放后台再回来偶尔丢了 transform 动画、光晕停在大圈上只剩透明度在变时，看到的仍是一明一暗的呼吸，不是一闪一闪。
+   transform 只写在 0% 和 70%，放大的快慢和原来一样 */
+@keyframes kid-breathe {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  70%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.kid-dot span {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: var(--marker);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* 行进方向：外圈上一个指向前方的小三角，逐帧平滑转向（角度由 map/useKids 按地图朝向换算，不用 CSS 过渡） */
+.kid-heading {
+  position: absolute;
+  inset: -14px;
+  pointer-events: none;
+}
+
+.kid-heading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid var(--ring);
+  border-left: 8px solid transparent;
+  filter: drop-shadow(0 0 1px #ffffff) drop-shadow(0 1px 2px rgb(0 0 0 / 0.35));
+}
+
+.kid-selected .kid-dot {
+  width: 48px;
+  height: 48px;
+  padding: 3px;
+}
+
+.kid-selected .kid-dot span {
+  border-width: 3px;
+  font-size: 18px;
+}
+
+.kid-label {
+  max-width: 112px;
+  overflow: hidden;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--float);
+  box-shadow: var(--shadow-card);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.place-label {
+  max-width: 120px;
+  overflow: hidden;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: var(--float);
+  color: var(--mute);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.kid-selected .kid-label {
+  font-weight: 600;
+}
+
+/* 选中那台的定位精度圈：半透明的颜色档圆，压在所有圆点下面；网络定位（Wi-Fi、基站）的圈大，一看就是「大概位置」 */
+.kid-accuracy {
+  box-sizing: border-box;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.kid-accuracy::before,
+.kid-accuracy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.kid-accuracy::before {
+  background: var(--ring);
+  opacity: 0.12;
+}
+
+.kid-accuracy::after {
+  border: 1px solid var(--ring);
+  opacity: 0.4;
+}
+
+.kid-fresh {
+  --ring: var(--an);
+}
+.kid-stale {
+  --ring: var(--mute);
+}
+.kid-lost {
+  --ring: var(--jing);
+}
+
+/* 状态句前的小圆点在路上、实时时：和地图上的孩子圆点同一个呼吸，光晕和圆点同色（安） */
+.live-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: kid-breathe 2.4s ease-out infinite;
+}
+
+/* 二级页从右边滑入：跟手的减速曲线，不回弹 */
+.sub-page {
+  animation: sub-page-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes sub-page-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+  .kid-fresh .kid-dot::before,
+  .live-dot::before,
+  .sub-page {
+    animation: none;
+  }
+}
+
+/* 长按地图别弹出系统的图片菜单、别选中文字 */
+.maplibregl-canvas-container {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 选点图钉：和预览圈同一个绿；尖对准圆心，地图在动时抬起 6 像素，落地的小影子留在原地 */
+.pick-pin {
+  position: absolute;
+  left: 50%;
+  z-index: 3; /* 压在孩子的圆点（1、选中 2）上面 */
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+}
+
+.pick-pin-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 160ms ease-out;
+}
+
+.pick-pin[data-moving] .pick-pin-body {
+  transform: translateY(-6px);
+}
+
+.pick-pin-head {
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: var(--an);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.3);
+}
+
+.pick-pin-stem {
+  width: 3px;
+  height: 26px; /* 圆头整个露在选中孩子的圆点（直径 48）上面 */
+  margin-top: -1px;
+  border-radius: 0 0 2px 2px;
+  background: var(--an);
+}
+
+.pick-pin-ground {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 8px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.35);
+  transform: translateX(-50%);
+}
+
+/* 地点名字能点时（没在选点、填表）：点它打开地点卡片 */
+.place-label-tap {
+  cursor: pointer;
+  pointer-events: auto;
+}

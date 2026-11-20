@@ -1,0 +1,13 @@
+{
+  "name": "fresh-install-indoor",
+  "title": "11-19 三星：全新装在屋里，从没有过卫星点，只有网络估算（服务器上还没有这台设备的位置）",
+  "start": "2026-11-20T20:00:00+08:00",
+  "seed": 37,
+  "speed": 20,
+  "fresh": true,
+  "segments": [
+    {"kind": "indoor", "seconds": 600, "fix": "wifi", "wifi": "fixed"},
+    {"kind": "stay", "seconds": 600, "fix": "wifi", "wifi": "fixed"}
+  ],
+  "events": []
+}

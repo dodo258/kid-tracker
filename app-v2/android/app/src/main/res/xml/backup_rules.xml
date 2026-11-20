@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 安卓 11 及以下的备份：和 data_extraction_rules.xml 排除同样的东西 -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="." />
+    <exclude domain="database" path="tracker.db" />
+    <exclude domain="database" path="tracker.db-journal" />
+    <exclude domain="database" path="tracker.db-wal" />
+    <exclude domain="database" path="tracker.db-shm" />
+    <exclude domain="device_sharedpref" path="." />
+    <exclude domain="device_database" path="." />
+    <exclude domain="database" path="legacy-backup" />
+    <exclude domain="file" path="recorder" />
+    <exclude domain="external" path="recorder" />
+</full-backup-content>

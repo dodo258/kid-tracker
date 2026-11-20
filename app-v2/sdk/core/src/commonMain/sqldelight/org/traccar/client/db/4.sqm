@@ -1,0 +1,9 @@
+-- 告警发件箱（上报端 v2 第五步），见 Alert.sq
+CREATE TABLE Alert (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    alarm TEXT NOT NULL,
+    time INTEGER NOT NULL,
+    position TEXT NOT NULL,
+    ready INTEGER NOT NULL DEFAULT 1,
+    sentAt INTEGER
+);

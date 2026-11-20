@@ -1,0 +1,39 @@
+CREATE TABLE Position (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    latitude REAL,
+    longitude REAL,
+    accuracy REAL,
+    time INTEGER NOT NULL,
+    altitude REAL,
+    speed REAL,
+    bearing REAL,
+    battery INTEGER,
+    charging INTEGER,
+    extras TEXT
+);
+
+enqueue:
+INSERT INTO Position(latitude, longitude, accuracy, time, altitude, speed, bearing, battery, charging, extras)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+-- 行号比 :after 大的最旧一条（:after 及以前的已经发出去了，只是存储满时还没删掉）
+peekAfter:
+SELECT id, latitude, longitude, accuracy, time, altitude, speed, bearing, battery, charging, extras
+FROM Position
+WHERE id > :after
+ORDER BY id ASC
+LIMIT 1;
+
+-- 发出去了按行号确认：只删到这一行（发送期间被裁掉了也不会误删下一条没发的）
+removeThrough:
+DELETE FROM Position
+WHERE id <= :id;
+
+-- 离线队列的条数（id 自增、只从最旧的删，所以首尾之差就是条数，不用全表数）
+span:
+SELECT COALESCE(MAX(id) - MIN(id) + 1, 0) FROM Position;
+
+-- 超过 :keep 条时丢最旧的
+trim:
+DELETE FROM Position
+WHERE id <= (SELECT MAX(id) - :keep FROM Position);

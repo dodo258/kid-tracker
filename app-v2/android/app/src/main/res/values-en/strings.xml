@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="guard_admin_description">Uninstall protection for the tracker: turn it off in the app with the password before uninstalling.</string>
+    <string name="guard_admin_explanation">Once activated, the protection has to be turned off in the app settings with the app password before the app can be uninstalled. The app uses no admin policies.</string>
+    <string name="guard_admin_disable_warning">After deactivation the app can be uninstalled. The parent will be notified.</string>
+</resources>

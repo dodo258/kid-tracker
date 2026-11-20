@@ -1,0 +1,44 @@
+{
+  "name": "offline-backfill",
+  "title": "骑车路上断网 10 分钟，恢复后一次补传（断网前最后一个点手机没收到响应，又发一次）",
+  "start": "2026-11-20T16:30:00+08:00",
+  "seed": 14,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 60,
+      "wifi": "none"
+    },
+    {
+      "kind": "bike",
+      "legs": [
+        [
+          0,
+          1200
+        ],
+        [
+          90,
+          1500
+        ],
+        [
+          0,
+          1300
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 120,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "offline",
+      "from": 300,
+      "to": 900,
+      "resend_first": true
+    }
+  ]
+}

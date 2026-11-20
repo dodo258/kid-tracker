@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 安卓 12 起的云备份和换机传输：本 App 的设置（App 密码、设备号、服务器地址，含 SDK 和原生的设置）、
+     离线定位库、传感器录制都不带走。SDK 的库和设置（tracker.db、background_health 等）在设备保护存储（device_* 两项，
+     没解锁也要恢复上报），凭据存储里的那几行留着给还没搬过去的老数据。换机恢复了设备号，两部手机会报到同一个设备下。
+     官方说明：https://developer.android.com/identity/data/autobackup （path 是目录时含下面全部文件，不支持通配符） -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="." />
+        <exclude domain="database" path="tracker.db" />
+        <exclude domain="database" path="tracker.db-journal" />
+        <exclude domain="database" path="tracker.db-wal" />
+        <exclude domain="database" path="tracker.db-shm" />
+        <exclude domain="device_sharedpref" path="." />
+        <exclude domain="device_database" path="." />
+        <exclude domain="database" path="legacy-backup" />
+        <exclude domain="file" path="recorder" />
+        <exclude domain="external" path="recorder" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="." />
+        <exclude domain="database" path="tracker.db" />
+        <exclude domain="database" path="tracker.db-journal" />
+        <exclude domain="database" path="tracker.db-wal" />
+        <exclude domain="database" path="tracker.db-shm" />
+        <exclude domain="device_sharedpref" path="." />
+        <exclude domain="device_database" path="." />
+        <exclude domain="database" path="legacy-backup" />
+        <exclude domain="file" path="recorder" />
+        <exclude domain="external" path="recorder" />
+    </device-transfer>
+</data-extraction-rules>

@@ -1,0 +1,8 @@
+name = "tg-relay"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+workers_dev = false
+
+[[routes]]
+pattern = "tgrelay.example.com"
+custom_domain = true

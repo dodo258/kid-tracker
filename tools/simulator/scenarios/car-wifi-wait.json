@@ -1,0 +1,75 @@
+{
+  "name": "car-wifi-wait",
+  "title": "走到车旁上车，连上车机自带的 Wi-Fi（不计费、名字不像热点），车停着等 2 分钟才开；开车每 90 秒左右等一次红灯（40 秒），车里卫星冷启动 40 秒；下车走进店里",
+  "start": "2026-11-20T08:10:00+08:00",
+  "seed": 31,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 90,
+      "wifi": "none"
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          90,
+          120
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 120,
+      "fix": "gps",
+      "wifi": "car"
+    },
+    {
+      "kind": "bus",
+      "mps": 10,
+      "legs": [
+        [
+          90,
+          3600
+        ]
+      ],
+      "stops": [
+        [
+          900,
+          40
+        ],
+        [
+          1800,
+          40
+        ],
+        [
+          2700,
+          40
+        ]
+      ],
+      "wifi": "car"
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          0,
+          60
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 180,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "cold_start",
+      "from": 406,
+      "to": 446
+    }
+  ]
+}

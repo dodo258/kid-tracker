@@ -1,0 +1,76 @@
+{
+  "name": "bus-lights-tunnel",
+  "title": "走到车站等车，坐公交（两次红灯 90 秒、60 秒，过隧道 90 秒没定位），下车走一段",
+  "start": "2026-11-20T07:05:00+08:00",
+  "seed": 12,
+  "speed": 20,
+  "segments": [
+    {
+      "kind": "stay",
+      "seconds": 120
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          0,
+          150
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 120,
+      "fix": "gps",
+      "wifi": "none"
+    },
+    {
+      "kind": "bus",
+      "legs": [
+        [
+          90,
+          1500
+        ],
+        [
+          45,
+          1200
+        ],
+        [
+          90,
+          1800
+        ]
+      ],
+      "stops": [
+        [
+          700,
+          90
+        ],
+        [
+          2600,
+          60
+        ]
+      ]
+    },
+    {
+      "kind": "walk",
+      "legs": [
+        [
+          0,
+          120
+        ]
+      ]
+    },
+    {
+      "kind": "stay",
+      "seconds": 120,
+      "wifi": "none"
+    }
+  ],
+  "events": [
+    {
+      "type": "no_fix",
+      "from": 820,
+      "to": 910
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+孩子在哪 (child location tracker based on Traccar)
+
+This project contains code derived from:
+
+- Traccar Client (https://github.com/traccar/traccar-client)
+  Copyright Anton Tananaev and contributors
+  Licensed under the Apache License, Version 2.0
+
+- Traccar Client SDK (https://github.com/traccar/traccar-client-sdk)
+  Copyright Anton Tananaev and contributors
+  Licensed under the Apache License, Version 2.0
+
+The files under app-v2/ were modified from the upstream projects: package name,
+location sources, motion and fallback policies, keep-alive checks, alerts,
+offline buffering and UI were changed or added, and Firebase was removed.
+parent-web/, server/ and tools/ are original to this project.
+
+All of it is distributed under the Apache License, Version 2.0 (see LICENSE).
